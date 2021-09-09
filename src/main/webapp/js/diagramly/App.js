@@ -6798,7 +6798,8 @@ App.prototype.updateHeader = function()
 			
 			mxEvent.consume(evt);
 		}));
-		
+		console.log(68001)
+		console.log(this.fname);
 		this.fnameWrapper.appendChild(this.fname);
 		
 		if (urlParams['embed'] != '1')
@@ -7072,7 +7073,6 @@ App.prototype.updateUserElement = function()
 			{
 				if (this.userPanel == null)
 				{
-					var div = document.createElement('div');
 					div.className = 'geDialog';
 					div.style.position = 'absolute';
 					div.style.top = (this.userElement.clientTop + this.userElement.clientHeight + 6) + 'px';
