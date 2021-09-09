@@ -1291,6 +1291,15 @@ App.initPluginCallback = function()
 		window.Draw = new Object();
 		window.Draw.loadPlugin = function(callback)
 		{
+			// Adds menu
+ui.menubar.addMenu('My Menu', function(menu, parent) {
+    ui.menus.addMenuItem(menu, 'myInsertText');
+    ui.menus.addMenuItem(menu, 'myInsertEllipse');
+});
+
+// Reorders menubar
+ui.menubar.container.insertBefore(ui.menubar.container.lastChild,
+ui.menubar.container.lastChild.previousSibling.previousSibling);
 			App.DrawPlugins.push(callback);
 		};
 	}
