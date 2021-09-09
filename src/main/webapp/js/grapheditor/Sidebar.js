@@ -22,6 +22,7 @@ function Sidebar(editorUi, container)
 	
 	this.pointerUpHandler = mxUtils.bind(this, function()
 	{
+		console.log(25)
 		if (this.tooltipCloseImage == null || this.tooltipCloseImage.style.display == 'none')
 		{
 			this.showTooltips = true;
@@ -33,6 +34,7 @@ function Sidebar(editorUi, container)
 
 	this.pointerDownHandler = mxUtils.bind(this, function()
 	{
+		console.log(2351)
 		if (this.tooltipCloseImage == null || this.tooltipCloseImage.style.display == 'none')
 		{
 			this.showTooltips = false;
