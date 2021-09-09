@@ -6702,6 +6702,7 @@ App.prototype.updateHeader = function()
 	
 		mxEvent.addListener(this.appIcon, 'mouseover', mxUtils.bind(this, function()
 		{
+			console.log(6705);
 			var file = this.getCurrentFile();
 			
 			if (file != null)
@@ -6748,6 +6749,7 @@ App.prototype.updateHeader = function()
 		
 		mxEvent.addListener(this.appIcon, 'mouseout', mxUtils.bind(this, function()
 		{
+			console.log(6751)
 			this.appIcon.style.backgroundImage = logo;
 			this.appIcon.style.backgroundSize = '90% 90%';
 		}));
