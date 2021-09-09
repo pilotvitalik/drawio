@@ -538,7 +538,7 @@ Sidebar.prototype.hideTooltip = function()
 	
 	if (this.tooltip != null)
 	{
-		this.tooltip.style.display = 'none';
+		//this.tooltip.style.display = 'none';
 		this.currentElt = null;
 	}
 	
