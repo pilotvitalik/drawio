@@ -348,15 +348,6 @@
 				status.innerHTML = 'Page could not be loaded. Please try refreshing.';
 			}
 		};
-		console.log('start');
-		let mainBlock = document.querySelectorAll('.geSidebar');
-		let svg = '<svg class="testSVG" height="100" width="100"><circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" /></svg>';
-		mainBlock.forEach((item, index) => {
-			if (index === 2){
-				console.log(item);
-				item.insertAdjacentHTML('beforeend', svg);
-			}
-		})
 		
 	</script>
     <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/plgmlhohecdddhbmmkncjdmlhcmaachm">
@@ -480,6 +471,15 @@ else
 		App.main();
 	}
 }
+	console.log('start');
+		let mainBlock = document.querySelectorAll('.geSidebar');
+		let svg = '<svg class="testSVG" height="100" width="100"><circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" /></svg>';
+		mainBlock.forEach((item, index) => {
+			if (index === 2){
+				console.log(item);
+				item.insertAdjacentHTML('beforeend', svg);
+			}
+		})
 </script>
 </body>
 </html>
