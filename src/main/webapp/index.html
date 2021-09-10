@@ -476,7 +476,7 @@ setTimeout(() => {
 	blockDiagrams.forEach((block, index) => {
 		if (index === 2){
 			let el = block.querySelector('.geItem');
-			let newEl = el.cloneNode(el);
+			let newEl = el.cloneNode(true);
 			console.log(block);
 			block.append(newEl);
 		}
