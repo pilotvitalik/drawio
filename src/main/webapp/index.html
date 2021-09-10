@@ -233,8 +233,10 @@
 		
 		function checkAllLoaded()
 		{
+			console.log('checkAllLoaded')
 			if (mxScriptsLoaded && mxWinLoaded)
 			{
+				console.log('App.main')
 				App.main();				
 			}
 		};
@@ -304,6 +306,7 @@
 						
 						if (!supportedDomain)
 						{
+							console.log(307)
 							mxscript('js/PostConfig.js');
 						}
 						
