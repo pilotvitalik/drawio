@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 68')
+console.log('ver. 69')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -524,9 +524,8 @@ function hoverFigure(figure){
 	let hoverBlock = document.querySelector('.geSidebarTooltip');
 	let svg = hoverBlock.querySelector('svg');
 	let paintBlock = svg.querySelector('g').children[1].children[0];
-	paintBlock.innerHTML = '';
-	paintBlock.append(copyEl);
-	hoverBlock.style.display = 'block';
+	let updateCoordinate = 'M 26.22 1.36 Q 5.82 1.36 5.82 14.96 Q 5.82 28.56 26.22 28.56 Z';
+	paintBlock.setAttribute('d', updateCoordinate);
 }
 
 </script>
