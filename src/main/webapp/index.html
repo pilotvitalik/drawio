@@ -472,10 +472,16 @@ else
 	}
 }
 
-console.log('ver. 45')
-document.addEventListener('DOMContentLoaded', (event) => {
-	console.log('DOM fully loaded and parsed');
-});
+console.log('ver. 46')
+let delay = 300;
+let isSidebar = setTimeout(function request() {
+	let sidebar = document.querySelectorAll('.geSidebar');
+	if (sidebar.length) {
+		clearTimeout(isSidebar);
+	}
+	console.log('sidebar is absent')
+	isSidebar = setTimeout(request, 300);
+}, 300);
 	
 </script>
 </body>
