@@ -479,8 +479,12 @@ setTimeout(() => {
 			let newEl = el.cloneNode(true);
 			console.log(block);
 			block.append(newEl);
+			document.addEventListener('click', test)
 		}
 	})
+	function test(e){
+		console.log(e)
+	}
 }, 15000)
 	
 </script>
