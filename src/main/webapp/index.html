@@ -479,7 +479,7 @@ setTimeout(() => {
 			let newEl = el.cloneNode(true);
 			console.log(block);
 			block.append(newEl);
-			document.addEventListener('click', test)
+			el.addEventListener('click', test)
 		}
 	})
 	function test(e){
