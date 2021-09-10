@@ -477,18 +477,19 @@ setTimeout(() => {
 		if (index === 2){
 			let el = block.querySelector('.geItem');
 			let newEl = el.cloneNode(true);
-			console.log('ver 32');
+			console.log('ver 33');
 			block.append(newEl);
 			collectEvents(el, newEl);
 		}
 	})
 	function collectEvents(el, newEl){
+		console.log('collectEvents')
 		var is_active=false;
 		// listener tracking datas
 		var _elements_  =[];
 		var _listeners_ =[];
 		this.init=function(){
-			if(!is_active){//avoid duplicate call
+			if(!is_active){
 				intercep_events_listeners();
 			}
 			is_active=true;
@@ -505,6 +506,7 @@ setTimeout(() => {
 		};
 		var intercep_events_listeners = function(){
 			// backup overrided methods
+			console.log('intercep_events_listeners')
 			var _super_={
 				"addEventListener"      : HTMLElement.prototype.addEventListener,
 				"removeEventListener"   : HTMLElement.prototype.removeEventListener
