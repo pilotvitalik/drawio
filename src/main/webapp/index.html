@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 62')
+console.log('ver. 63')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -493,11 +493,19 @@ function findElement(sidebar){
 		let targetItem = items[i].querySelector('path');
 		if (targetItem){
 			if (targetItem.getAttribute('d') === originalCoordinate){
+				removeListeners(items[i])
 				changeElement(targetItem);
 				return false;
 			}
 		}
 	}
+}
+
+function removeListeners(item){
+	item.addEventListener('click', (e) => {e.stopImmediatePropagation();});
+	item.addEventListener('dragstart', (e) => {e.stopImmediatePropagation();});
+	item.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation();});
+	item.addEventListener('pointermove', (e) => {e.stopImmediatePropagation();});
 }
 
 function changeElement(targetItem){
