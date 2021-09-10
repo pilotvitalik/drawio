@@ -724,6 +724,7 @@ App.main = function(callback, createUi)
 			
 			// Configured plugins in embed mode with configure=1 URL should be loaded so we
 			// look ahead here and parse the config to fetch the list of custom plugins
+			console.log(727)
 			if (mxSettings.settings == null && isLocalStorage && typeof(JSON) !== 'undefined')
 			{
 				try
@@ -820,6 +821,7 @@ App.main = function(callback, createUi)
 
 	function doLoad(bundle)
 	{
+		console.log(727)
 		// Prefetches asynchronous requests so that below code runs synchronous
 		// Loading the correct bundle (one file) via the fallback system in mxResources. The stylesheet
 		// is compiled into JS in the build process and is only needed for local development.
@@ -1097,7 +1099,7 @@ App.main = function(callback, createUi)
 				console.error(e);
 			}
 		}
-
+		console.log(727)
 		// Prefetches default fonts with URLs
 		if (Menus.prototype.defaultFonts != null)
 		{
@@ -5855,7 +5857,7 @@ App.prototype.updateButtonContainer = function()
 				this.shareButton.parentNode.removeChild(this.shareButton);
 				this.shareButton = null;
 			}
-			
+			console.log(727)
 			//Fetch notifications
 			this.fetchAndShowNotification(this.mode == 'device' || this.mode == 'google'? this.mode : null);
 		}
@@ -5869,6 +5871,7 @@ App.prototype.updateButtonContainer = function()
 
 App.prototype.fetchAndShowNotification = function(target)
 {
+	console.log(727)
 	if (this.fetchingNotif)
 	{
 		return;	
@@ -5904,6 +5907,7 @@ App.prototype.fetchAndShowNotification = function(target)
 	
 	if (cachedNotif == null || cachedNotif.ts + 24 * 60 * 60 * 1000 < Date.now()) //Cache for one day
 	{
+		console.log(727)
 		this.fetchingNotif = true;
 		//Fetch all notifications and store them, then filter client-side
 		mxUtils.get(NOTIFICATIONS_URL, mxUtils.bind(this, function(req)
@@ -5917,7 +5921,7 @@ App.prototype.fetchAndShowNotification = function(target)
 				{
 					return b.timestamp - a.timestamp;
 				});
-
+				console.log(727)
 				localStorage.setItem(cachedNotifKey, JSON.stringify({ts: Date.now(), notifs: notifs}));
 				this.fetchingNotif = false;	
 				processNotif(notifs);
