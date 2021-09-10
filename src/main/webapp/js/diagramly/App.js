@@ -72,6 +72,7 @@ App = function(editor, container, lightbox)
 	}
 	else
 	{
+		console.log(75)
 		var img = new Image();
 		img.src = mxGraph.prototype.warningImage.src;
 	}

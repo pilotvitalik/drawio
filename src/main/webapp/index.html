@@ -233,16 +233,10 @@
 		
 		function checkAllLoaded()
 		{
-			console.log('checkAllLoaded')
 			if (mxScriptsLoaded && mxWinLoaded)
 			{
-				console.log(App.main)
 				App.main();
-				let el = document.querySelectorAll('.geSidebar');
-				console.log(el);
 			}
-			let el = document.querySelectorAll('.geSidebar');
-			console.log(el);
 		};
 		
 		var t0 = new Date();
@@ -270,7 +264,6 @@
 
 			mxscript(drawDevUrl + 'js/PreConfig.js');
 			mxscript(drawDevUrl + 'js/diagramly/Init.js');
-			console.log('geBasePath')
 			//mxscript(geBasePath + '/Init.js');
 			mxscript(mxBasePath + '/mxClient.js');
 			
@@ -290,8 +283,6 @@
 		}
 		else
 		{
-			console.log(287);
-			console.log(288);
 			(function()
 			{
 				var hostName = window.location.hostname;
@@ -300,25 +291,21 @@
 				var supportedDomain = (hostName.substring(hostName.length - 8, hostName.length) === '.draw.io') ||
 					(hostName.substring(hostName.length - 13, hostName.length) === '.diagrams.net');
 					(hostName.substring(hostName.length - 17, hostName.length) === '.quipelements.com');
-				console.log(297)
 				function loadAppJS()
 				{
-					//mxscript('js/app.min.js', function()
+					mxscript('js/app.min.js', function()
 					{
 						mxScriptsLoaded = true;
 						checkAllLoaded();
 						
 						if (!supportedDomain)
 						{
-							console.log(307)
 							mxscript('js/PostConfig.js');
 						}
 						
 						// Electron
-						console.log(311);
 						if (mxIsElectron)
 						{
-							console.log('this Electron');
 							mxscript('js/diagramly/DesktopLibrary.js', function()
 							{
 								mxscript('js/diagramly/ElectronApp.js', function()
@@ -341,7 +328,6 @@
 				
 				if (!supportedDomain || mxIsElectron)
 				{
-					console.log(337)
 					mxscript('js/PreConfig.js', loadAppJS);
 				}
 				else
@@ -473,21 +459,15 @@ else
 {
 	if (urlParams['dev'] != '1' && typeof document.createElement('canvas').getContext === "function")
 	{
-		let el = document.querySelectorAll('.geSidebar');
-		console.log(el);
 		window.addEventListener('load', function()
 		{
 			mxWinLoaded = true;
 			checkAllLoaded();
-			let el = document.querySelectorAll('.geSidebar');
-			console.log(el);
 		});
 	}
 	else
 	{
 		App.main();
-		let el = document.querySelectorAll('.geSidebar');
-		console.log(el);
 	}
 }
 	
