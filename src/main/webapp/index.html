@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 58')
+console.log('ver. 59')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -503,7 +503,6 @@ function findElement(sidebar){
 function changeElement(targetItem){
 	let updateCoordinate = 'M 26.22 1.36 Q 5.82 1.36 5.82 14.96 Q 5.82 28.56 26.22 28.56 Z';
 	targetItem.setAttribute('d', updateCoordinate);
-	targetItem.stopImmediatePropagation();
 	targetItem.addEventListener('click', (e) => {e.stopImmediatePropagation(); console.log('Hello')});
 }
 
