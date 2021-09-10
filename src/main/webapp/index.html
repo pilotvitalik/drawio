@@ -477,7 +477,7 @@ setTimeout(() => {
 		if (index === 2){
 			let el = block.querySelector('.geItem');
 			let newEl = el.cloneNode(true);
-			console.log('ver 28');
+			console.log('ver 29');
 			block.append(newEl);
 			collectEvents(el, newEl);
 		}
@@ -486,7 +486,7 @@ setTimeout(() => {
 		console.log(typeof el)
 		Object.prototype.on = () => {
 			console.log(arguments)
-			this.addEventListener.apply(this, arguments);
+			//this.addEventListener.apply(this, arguments);
 		}
 
 		Object.prototype.getEventListeners = function () {
@@ -494,7 +494,7 @@ setTimeout(() => {
 		}
 		el.on();
 	}
-}, 15000)
+}, 10000)
 	
 </script>
 </body>
