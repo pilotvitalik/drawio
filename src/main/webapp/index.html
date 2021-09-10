@@ -491,7 +491,7 @@ function findElement(sidebar){
 	let items = sidebar.querySelectorAll('.geItem');
 	let originalCoordinate = 'M 5.78 1.36 Q 26.18 1.36 26.18 14.96 Q 26.18 28.56 5.78 28.56 Z';
 	for (let i = 0; i < items.length; i++){
-		let targetItem = item.querySelector('path');
+		let targetItem = items[i].querySelector('path');
 		if (targetItem){
 			if (targetItem.getAttribute('d') === originalCoordinate){
 				changeElement(targetItem);
@@ -505,7 +505,7 @@ function changeElement(targetItem){
 	let updateCoordinate = 'M 26.22 1.36 Q 5.82 1.36 5.82 14.96 Q 5.82 28.56 26.22 28.56 Z';
 	targetItem.setAttribute('d', updateCoordinate);
 }
-	
+
 </script>
 </body>
 </html>
