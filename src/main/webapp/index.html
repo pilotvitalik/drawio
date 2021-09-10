@@ -470,6 +470,18 @@ else
 		App.main();
 	}
 }
+
+setTimeout(() => {
+	let blockDiagrams = document.querySelectorAll('.geSidebar');
+	blockDiagrams.forEach((block, index) => {
+		if (index === 2){
+			let el = block.querySelector('.geItem');
+			let newEl = el.cloneNode(el);
+			console.log(block);
+			block.append(newEl);
+		}
+	})
+}, 15000)
 	
 </script>
 </body>
