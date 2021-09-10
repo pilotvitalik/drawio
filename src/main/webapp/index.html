@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 69')
+console.log('ver. 70')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -505,8 +505,7 @@ function rewriteListeners(item, targetItem){
 	item.addEventListener('click', (e) => {e.stopImmediatePropagation();}, true);
 	item.addEventListener('dragstart', (e) => {e.stopImmediatePropagation();}, true);
 	item.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation();}, true);
-	//item.addEventListener('pointermove', (e) => {e.stopImmediatePropagation();}, true);
-	item.pointermove = hoverFigure.bind(null, targetItem)
+	item.addEventListener('pointermove', (e) => {e.stopImmediatePropagation(); hoverFigure}, true);
 }
 
 function changeElement(targetItem){
@@ -518,9 +517,9 @@ function changeElement(targetItem){
 	// targetItem.addEventListener('pointermove', (e) => {e.stopImmediatePropagation(); hoverFigure(targetItem)}, true);
 }
 
-function hoverFigure(figure){
+function hoverFigure(){
 	console.log('hoverFigure')
-	let copyEl = figure.cloneNode(true);
+	//let copyEl = figure.cloneNode(true);
 	let hoverBlock = document.querySelector('.geSidebarTooltip');
 	let svg = hoverBlock.querySelector('svg');
 	let paintBlock = svg.querySelector('g').children[1].children[0];
