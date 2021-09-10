@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 76')
+console.log('ver. 77')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -531,8 +531,7 @@ function insertFigure(){
 	let svg = block.querySelector('svg');
 	let paintBlocks = svg.querySelector('g').children[1].querySelectorAll('g');
 	let path = paintBlocks[paintBlocks.length - 1].querySelector('path');
-	let updateCoordinate = 'M 1455 231 Q 1395 231 1395 271 Q 1395 311 1455 311 Z';
-	path.setAttribute('d', updateCoordinate);		   
+	path.setAttribute('transform', 'rotate(-180,1433,336)');		   
 }
 
 </script>
