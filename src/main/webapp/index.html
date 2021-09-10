@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 65')
+console.log('ver. 66')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -493,31 +493,33 @@ function findElement(sidebar){
 		let targetItem = items[i].querySelector('path');
 		if (targetItem){
 			if (targetItem.getAttribute('d') === originalCoordinate){
-				removeListeners(items[i])
 				changeElement(targetItem);
+				rewriteListeners(items[i], targetItem);
 				return false;
 			}
 		}
 	}
 }
 
-function removeListeners(item){
+function rewriteListeners(item, targetItem){
 	item.addEventListener('click', (e) => {e.stopImmediatePropagation();}, true);
 	item.addEventListener('dragstart', (e) => {e.stopImmediatePropagation();}, true);
 	item.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation();}, true);
-	item.addEventListener('pointermove', (e) => {e.stopImmediatePropagation();}, true);
+	item.addEventListener('pointermove', (e) => {e.stopImmediatePropagation();} true);
+	item.pointermove = hoverFigure.bind(null, targetItem)
 }
 
 function changeElement(targetItem){
 	let updateCoordinate = 'M 26.22 1.36 Q 5.82 1.36 5.82 14.96 Q 5.82 28.56 26.22 28.56 Z';
 	targetItem.setAttribute('d', updateCoordinate);
-	targetItem.addEventListener('click', (e) => {e.stopImmediatePropagation();}, true);
-	targetItem.addEventListener('dragstart', (e) => {e.stopImmediatePropagation();}, true);
-	targetItem.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation();}, true);
-	targetItem.addEventListener('pointermove', (e) => {e.stopImmediatePropagation(); hoverFigure(targetItem)}, true);
+	// targetItem.addEventListener('click', (e) => {e.stopImmediatePropagation();}, true);
+	// targetItem.addEventListener('dragstart', (e) => {e.stopImmediatePropagation();}, true);
+	// targetItem.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation();}, true);
+	// targetItem.addEventListener('pointermove', (e) => {e.stopImmediatePropagation(); hoverFigure(targetItem)}, true);
 }
 
 function hoverFigure(figure){
+	console.log('hoverFigure')
 	let copyEl = figure.cloneNode(true);
 	let hoverBlock = document.querySelector('.geSidebarTooltip');
 	let svg = hoverBlock.querySelector('svg');
