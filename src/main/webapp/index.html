@@ -472,19 +472,17 @@ else
 	}
 }
 
-isSidebar();
-
-console.log('ver. 49')
-function isSidebar(){
+console.log('ver. 50')
+let delay = 300;
+let isSidebar = setTimeout(function request() {
 	let sidebar = document.querySelectorAll('.geSidebar');
 	if (sidebar.length) {
-		console.log('sidebar there is')
+		clearTimeout(isSidebar);
+		return false;
 	}
+	isSidebar = setTimeout(request, 300);
 	console.log('sidebar is absent')
-	setTimeout(() => {
-		return isSidebar();
-	}, 300)
-}
+}, 300);
 	
 </script>
 </body>
