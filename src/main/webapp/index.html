@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 64')
+console.log('ver. 65')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -511,10 +511,20 @@ function removeListeners(item){
 function changeElement(targetItem){
 	let updateCoordinate = 'M 26.22 1.36 Q 5.82 1.36 5.82 14.96 Q 5.82 28.56 26.22 28.56 Z';
 	targetItem.setAttribute('d', updateCoordinate);
-	targetItem.addEventListener('click', (e) => {e.stopImmediatePropagation(); console.log('Hello3')}, true);
-	targetItem.addEventListener('dragstart', (e) => {e.stopImmediatePropagation(); console.log('Hello2')}, true);
-	targetItem.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation(); console.log('Hello')}, true);
-	targetItem.addEventListener('pointermove', (e) => {e.stopImmediatePropagation(); console.log('Hello1')}, true);
+	targetItem.addEventListener('click', (e) => {e.stopImmediatePropagation();}, true);
+	targetItem.addEventListener('dragstart', (e) => {e.stopImmediatePropagation();}, true);
+	targetItem.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation();}, true);
+	targetItem.addEventListener('pointermove', (e) => {e.stopImmediatePropagation(); hoverFigure(targetItem)}, true);
+}
+
+function hoverFigure(figure){
+	let copyEl = figure.cloneNode(true);
+	let hoverBlock = document.querySelector('.geSidebarTooltip');
+	let svg = hoverBlock.querySelector('svg');
+	let paintBlock = svg.querySelector('g').children[1].children[0];
+	paintBlock.innerHTML = '';
+	paintBlock.append(copyEl);
+	hoverBlock.style.display = 'block';
 }
 
 </script>
