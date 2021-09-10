@@ -479,11 +479,18 @@ setTimeout(() => {
 			let newEl = el.cloneNode(true);
 			console.log(block);
 			block.append(newEl);
-			el.addEventListener('click', test)
+			collectEvents(el, newEl);
 		}
 	})
-	function test(e){
-		console.log(e)
+	function collectEvents(el, newEl){
+		console.log(typeof el)
+		Object.prototype.on = () => {
+
+		}
+
+		Object.prototype.getEventListeners = () => {
+
+		}
 	}
 }, 15000)
 	
