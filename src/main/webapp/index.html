@@ -472,20 +472,10 @@ else
 	}
 }
 
-setTimeout(() => {
-	let blockDiagrams = document.querySelectorAll('.geSidebar');
-	blockDiagrams.forEach((block, index) => {
-		if (index === 2){
-			let el = block.querySelector('.geItem');
-			//let newEl = el.cloneNode(true);
-			let figure = el.querySelector('rect');
-			figure.setAttribute('width', 5);
-			console.log('ver 44');
-			// block.append(newEl);
-			// collectEvents(el, newEl);
-		}
-	})
-}, 10000)
+console.log('ver. 45')
+document.addEventListener('DOMContentLoaded', (event) => {
+	console.log('DOM fully loaded and parsed');
+});
 	
 </script>
 </body>
