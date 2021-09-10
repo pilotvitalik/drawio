@@ -472,10 +472,12 @@ else
 	}
 }
 
-console.log('ver. 46')
+console.log('ver. 47')
 let delay = 300;
 let isSidebar = setTimeout(function request() {
 	let sidebar = document.querySelectorAll('.geSidebar');
+	console.log(sidebar.length);
+	console.log(Boolean(sidebar.length))
 	if (sidebar.length) {
 		clearTimeout(isSidebar);
 	}
