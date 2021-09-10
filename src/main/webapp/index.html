@@ -476,11 +476,11 @@ setTimeout(() => {
 	let blockDiagrams = document.querySelectorAll('.geSidebar');
 	blockDiagrams.forEach((block, index) => {
 		if (index === 2){
-			let el = block.querySelectorAll('.geItem');
+			let el = block.querySelector('.geItem');
 			//let newEl = el.cloneNode(true);
 			let figure = el.querySelector('rect');
 			figure.setAttribute('width', 5);
-			console.log('ver 43');
+			console.log('ver 44');
 			// block.append(newEl);
 			// collectEvents(el, newEl);
 		}
