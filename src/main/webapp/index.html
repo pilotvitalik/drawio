@@ -16,7 +16,6 @@
 	<meta name="msapplication-config" content="images/browserconfig.xml">
     <meta name="mobile-web-app-capable" content="yes">
 	<meta name="theme-color" content="#d89000">
-	<script src='https://cdn.jsdelivr.net/gh/colxi/getEventListeners/src/getEventListeners.min.js'></script>
 	<script type="text/javascript">
 		/**
 		 * URL Parameters and protocol description are here:
@@ -350,7 +349,7 @@
 		};
 		
 	</script>
-    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/plgmlhohecdddhbmmkncjdmlhcmaachm">
+<!--    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/plgmlhohecdddhbmmkncjdmlhcmaachm">-->
 	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -472,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 55')
+console.log('ver. 56')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -504,6 +503,7 @@ function findElement(sidebar){
 function changeElement(targetItem){
 	let updateCoordinate = 'M 26.22 1.36 Q 5.82 1.36 5.82 14.96 Q 5.82 28.56 26.22 28.56 Z';
 	targetItem.setAttribute('d', updateCoordinate);
+	targetItem.addEventListener('click', () => {console.log('Hello')});
 }
 
 </script>
