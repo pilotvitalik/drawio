@@ -473,15 +473,21 @@ else
 {
 	if (urlParams['dev'] != '1' && typeof document.createElement('canvas').getContext === "function")
 	{
+		let el = document.querySelectorAll('.geSidebar');
+		console.log(el);
 		window.addEventListener('load', function()
 		{
 			mxWinLoaded = true;
 			checkAllLoaded();
+			let el = document.querySelectorAll('.geSidebar');
+			console.log(el);
 		});
 	}
 	else
 	{
 		App.main();
+		let el = document.querySelectorAll('.geSidebar');
+		console.log(el);
 	}
 }
 	
