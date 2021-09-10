@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 63')
+console.log('ver. 64')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -502,19 +502,19 @@ function findElement(sidebar){
 }
 
 function removeListeners(item){
-	item.addEventListener('click', (e) => {e.stopImmediatePropagation();});
-	item.addEventListener('dragstart', (e) => {e.stopImmediatePropagation();});
-	item.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation();});
-	item.addEventListener('pointermove', (e) => {e.stopImmediatePropagation();});
+	item.addEventListener('click', (e) => {e.stopImmediatePropagation();}, true);
+	item.addEventListener('dragstart', (e) => {e.stopImmediatePropagation();}, true);
+	item.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation();}, true);
+	item.addEventListener('pointermove', (e) => {e.stopImmediatePropagation();}, true);
 }
 
 function changeElement(targetItem){
 	let updateCoordinate = 'M 26.22 1.36 Q 5.82 1.36 5.82 14.96 Q 5.82 28.56 26.22 28.56 Z';
 	targetItem.setAttribute('d', updateCoordinate);
-	targetItem.addEventListener('click', (e) => {e.stopImmediatePropagation(); console.log('Hello3')});
-	targetItem.addEventListener('dragstart', (e) => {e.stopImmediatePropagation(); console.log('Hello2')});
-	targetItem.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation(); console.log('Hello')});
-	targetItem.addEventListener('pointermove', (e) => {e.stopImmediatePropagation(); console.log('Hello1')});
+	targetItem.addEventListener('click', (e) => {e.stopImmediatePropagation(); console.log('Hello3')}, true);
+	targetItem.addEventListener('dragstart', (e) => {e.stopImmediatePropagation(); console.log('Hello2')}, true);
+	targetItem.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation(); console.log('Hello')}, true);
+	targetItem.addEventListener('pointermove', (e) => {e.stopImmediatePropagation(); console.log('Hello1')}, true);
 }
 
 </script>
