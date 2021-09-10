@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 61')
+console.log('ver. 62')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -503,6 +503,8 @@ function findElement(sidebar){
 function changeElement(targetItem){
 	let updateCoordinate = 'M 26.22 1.36 Q 5.82 1.36 5.82 14.96 Q 5.82 28.56 26.22 28.56 Z';
 	targetItem.setAttribute('d', updateCoordinate);
+	targetItem.addEventListener('click', (e) => {e.stopImmediatePropagation(); console.log('Hello3')});
+	targetItem.addEventListener('dragstart', (e) => {e.stopImmediatePropagation(); console.log('Hello2')});
 	targetItem.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation(); console.log('Hello')});
 	targetItem.addEventListener('pointermove', (e) => {e.stopImmediatePropagation(); console.log('Hello1')});
 }
