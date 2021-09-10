@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 73')
+console.log('ver. 74')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -502,10 +502,10 @@ function findElement(sidebar){
 }
 
 function rewriteListeners(item, targetItem){
-	item.addEventListener('click', (e) => {e.stopImmediatePropagation();}, true);
-	item.addEventListener('dragstart', (e) => {e.stopImmediatePropagation();}, true);
-	item.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation();}, true);
-	//item.addEventListener('pointermove', (e) => {hoverFigure()}, true);
+	//item.addEventListener('click', (e) => {e.stopImmediatePropagation();}, true);
+	//item.addEventListener('dragstart', (e) => {e.stopImmediatePropagation();}, true);
+	//item.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation();}, true);
+	item.addEventListener('pointermove', (e) => {hoverFigure()}, true);
 }
 
 function changeElement(targetItem){
@@ -518,7 +518,7 @@ function hoverFigure(){
 	let hoverBlock = document.querySelector('.geSidebarTooltip');
 	let svg = hoverBlock.querySelector('svg');
 	let paintBlock = svg.querySelector('g').children[1].children[0].children[0]
-	let updateCoordinate = 'M 26.22 1.36 Q 5.82 1.36 5.82 14.96 Q 5.82 28.56 26.22 28.56 Z';
+	let updateCoordinate = 'M 84 16 Q 24 16 24 56 Q 24 96 84 96 Z';
 	paintBlock.setAttribute('d', updateCoordinate);
 }
 
