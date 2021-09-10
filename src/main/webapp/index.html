@@ -462,6 +462,7 @@ else
 {
 	if (urlParams['dev'] != '1' && typeof document.createElement('canvas').getContext === "function")
 	{
+		console.log(465)
 		window.addEventListener('load', function()
 		{
 			mxWinLoaded = true;
@@ -470,6 +471,7 @@ else
 	}
 	else
 	{
+		console.log(474)
 		App.main();
 	}
 }
