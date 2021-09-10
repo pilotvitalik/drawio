@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 70')
+console.log('ver. 71')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -505,7 +505,7 @@ function rewriteListeners(item, targetItem){
 	item.addEventListener('click', (e) => {e.stopImmediatePropagation();}, true);
 	item.addEventListener('dragstart', (e) => {e.stopImmediatePropagation();}, true);
 	item.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation();}, true);
-	item.addEventListener('pointermove', (e) => {e.stopImmediatePropagation(); hoverFigure}, true);
+	item.addEventListener('pointermove', (e) => {hoverFigure()}, true);
 }
 
 function changeElement(targetItem){
