@@ -294,7 +294,7 @@
 				var supportedDomain = (hostName.substring(hostName.length - 8, hostName.length) === '.draw.io') ||
 					(hostName.substring(hostName.length - 13, hostName.length) === '.diagrams.net');
 					(hostName.substring(hostName.length - 17, hostName.length) === '.quipelements.com');
-				
+				console.log(297)
 				function loadAppJS()
 				{
 					mxscript('js/app.min.js', function()
@@ -334,6 +334,7 @@
 				
 				if (!supportedDomain || mxIsElectron)
 				{
+					console.log(337)
 					mxscript('js/PreConfig.js', loadAppJS);
 				}
 				else
