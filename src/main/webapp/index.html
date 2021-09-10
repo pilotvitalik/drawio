@@ -478,7 +478,7 @@ setTimeout(() => {
 		if (index === 2){
 			let el = block.querySelector('.geItem');
 			let newEl = el.cloneNode(true);
-			console.log('ver 38');
+			console.log('ver 39');
 			block.append(newEl);
 			collectEvents(el, newEl);
 		}
@@ -491,7 +491,7 @@ setTimeout(() => {
 		var _listeners_ =[];
 		console.log(this);
 		console.log(el.getEventListeners());
-		console.log(Element.prototype);
+		console.log(Element.prototype.getEventListeners.arguments);
 		this.init=function(){
 			console.log(is_active)
 			// if(!is_active){
