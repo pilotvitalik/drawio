@@ -502,9 +502,9 @@ function findElement(sidebar){
 }
 
 function rewriteListeners(item, targetItem){
-	item.addEventListener('click', (e) => {setTimeout(() => {insertFigure()}, 0)}, true);
-	item.addEventListener('dragstart', (e) => {setTimeout(() => {insertFigure()}, 0)}, true);
-	item.addEventListener('pointerdown', (e) => {setTimeout(() => {insertFigure()}, 0)}, true);
+	item.addEventListener('click', (e) => {setTimeout(() => {insertFigure()}, 50)}, true);
+	item.addEventListener('dragstart', (e) => {setTimeout(() => {insertFigure()}, 50)}, true);
+	item.addEventListener('pointerdown', (e) => {setTimeout(() => {insertFigure()}, 50)}, true);
 	item.addEventListener('pointermove', (e) => {hoverFigure()}, true);
 }
 
