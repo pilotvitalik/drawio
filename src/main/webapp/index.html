@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 100')
+console.log('ver. 101')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -553,7 +553,8 @@ function monitorAddingEl(){
 		  console.log(mutation.type);
             if (mutation.type === 'childList') {
               console.log('A child node has been added or removed.');
-		    changeFigure(hoverBlock)
+		    changeFigure(hoverBlock);
+		    observer.disconnect();
             }
           }
        };
@@ -561,8 +562,6 @@ function monitorAddingEl(){
 	const observer = new MutationObserver(callback);
 	
 	observer.observe(target, config);
-	
-	observer.disconnect();
 }
 	
 function changeFigure(hoverBlock){
