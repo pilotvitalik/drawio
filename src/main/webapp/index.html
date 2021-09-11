@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 123')
+console.log('ver. 124')
 let titleMainBlock = 'General';
 let delay = 300;
 let statusHover = false;
@@ -623,8 +623,8 @@ function rewriteFigureListeners(figure){
 	parent.pointerdown = clickFigure(parent);
 }
 	
-function clickFigure(e){
-	e.stopImmediatePropagation();
+function clickFigure(){
+	this.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation()}, true);
 	this.addEventListener('pointermove', moveFigure, true);
 }
 	
