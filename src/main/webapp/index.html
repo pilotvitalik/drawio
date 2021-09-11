@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 102')
+console.log('ver. 103')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -545,7 +545,11 @@ function monitorAddingEl(hoverBlock){
     		childList: true,
 	};
 	
-	const callback = function(mutationsList, observer) {
+	const observer = new MutationObserver(callback);
+	
+	observer.observe(target, config);
+	
+	function callback(mutationsList, observer) {
 		console.log('callback')
 		console.log(mutationsList);
 		console.log(observer)
@@ -558,10 +562,6 @@ function monitorAddingEl(hoverBlock){
             }
           }
        };
-	
-	const observer = new MutationObserver(callback);
-	
-	observer.observe(target, config);
 }
 	
 function changeFigure(hoverBlock){
