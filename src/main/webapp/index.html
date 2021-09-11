@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 101')
+console.log('ver. 102')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -524,7 +524,7 @@ function hoverFigure(){
 	console.log('hoverFigure')
 	let hoverBlock = document.querySelector('.geSidebarTooltip');
 	if (!hoverBlock) {
-		monitorAddingEl();
+		monitorAddingEl(hoverBlock);
 		return false;
 	};
 	changeFigure(hoverBlock)
@@ -537,7 +537,7 @@ function removeFigure(){
 	bigFigure.remove();
 }
 	
-function monitorAddingEl(){
+function monitorAddingEl(hoverBlock){
 	console.log('monitorAddingEl')
 	let target = document.querySelector('.geEditor');
 	
