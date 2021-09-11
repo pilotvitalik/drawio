@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 77')
+console.log('ver. 78')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -511,10 +511,10 @@ function rewriteListeners(item, targetItem){
 function changeElement(targetItem){
 	let updateCoordinate = 'M 26.22 1.36 Q 5.82 1.36 5.82 14.96 Q 5.82 28.56 26.22 28.56 Z';
 	targetItem.setAttribute('d', updateCoordinate);
-	targetItem.addEventListener('click', (e) => {insertFigure()}, true);
-	targetItem.addEventListener('dragstart', (e) => {insertFigure()}, true);
-	targetItem.addEventListener('pointerdown', (e) => {insertFigure()}, true);
-	targetItem.addEventListener('pointermove', (e) => {hoverFigure()}, true);
+	targetItem.addEventListener('click', (e) => {e.stopImmediatePropagation()}, true);
+	targetItem.addEventListener('dragstart', (e) => {e.stopImmediatePropagation()}, true);
+	targetItem.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation()}, true);
+	targetItem.addEventListener('pointermove', (e) => {e.stopImmediatePropagation()}, true);
 }
 
 function hoverFigure(){
