@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 95')
+console.log('ver. 97')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -516,8 +516,8 @@ function changeElement(targetItem){
 // 	targetItem.addEventListener('click', (e) => {e.stopImmediatePropagation()}, true);
 // 	targetItem.addEventListener('dragstart', (e) => {e.stopImmediatePropagation()}, true);
 // 	targetItem.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation()}, true);
-	targetItem.addEventListener('pointermove', (e) => {hoverFigure()}, true);
-	targetItem.addEventListener('mouseover', (e) => {hoverFigure()}, true);
+	targetItem.addEventListener('pointermove', (e) => {e.stopImmediatePropagation()}, true);
+	targetItem.addEventListener('mouseover', (e) => {e.stopImmediatePropagation()}, true);
 }
 
 function hoverFigure(){
@@ -561,6 +561,7 @@ function monitorAddingEl(){
 }
 	
 function changeFigure(hoverBlock){
+	console.log('hoverBlock')
 	let svg = hoverBlock.querySelector('svg');
 	let paintBlock = svg.querySelector('g').children[1];
 	if (paintBlock.querySelector('.customEl')) return false;
