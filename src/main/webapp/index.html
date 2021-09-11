@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 119')
+console.log('ver. 120')
 let titleMainBlock = 'General';
 let delay = 300;
 let statusHover = false;
@@ -514,9 +514,6 @@ function rewriteListeners(item, targetItem){
 function changeElement(targetItem){
 	let updateCoordinate = 'M 26.22 1.36 Q 5.82 1.36 5.82 14.96 Q 5.82 28.56 26.22 28.56 Z';
 	targetItem.setAttribute('d', updateCoordinate);
- 	//targetItem.addEventListener('click', (e) => {e.stopImmediatePropagation()}, true);
- 	//targetItem.addEventListener('dragstart', (e) => {e.stopImmediatePropagation()}, true);
- 	//targetItem.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation()}, true);
 	targetItem.addEventListener('pointermove', (e) => {e.stopImmediatePropagation()}, true);
 	targetItem.addEventListener('mouseover', (e) => {e.stopImmediatePropagation()}, true);
 }
@@ -564,7 +561,7 @@ function monitorAddingEl(...args){
             		  }
 		  } else {
 			  if (mutation.type === 'childList') {
-		    		let figureBlocks = paintBlock.querySelectorAll('g');
+		    		let figureBlocks = target.querySelectorAll('g');
 		    		let figure = figureBlocks[figureBlocks.length - 1].querySelector('path');
 		    		observer.disconnect();
 		    		rotateFigure(figure);
