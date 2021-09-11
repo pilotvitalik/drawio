@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 81')
+console.log('ver. 82')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -533,7 +533,7 @@ function insertFigure(){
 	let path = paintBlocks[paintBlocks.length - 1].querySelector('path');
 	let coordinate = path.getAttribute('d');
 	let updCoordinate = changeCoordinate(coordinate);
-	path.setAttribute('d', 'updCoordinate');		   
+	path.setAttribute('d', updCoordinate);		   
 }
 	
 function changeCoordinate(coordinate){
@@ -552,6 +552,7 @@ function changeCoordinate(coordinate){
     	    return prev;
   	  }
 	}, []);
+	console.log(arrStr.join(' '))
  	return arrStr.join(' ');
 }
 
