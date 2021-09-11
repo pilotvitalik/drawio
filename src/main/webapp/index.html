@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 98')
+console.log('ver. 100')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -546,6 +546,9 @@ function monitorAddingEl(){
 	};
 	
 	const callback = function(mutationsList, observer) {
+		console.log('callback')
+		console.log(mutationsList);
+		console.log(observer)
           for (let mutation of mutationsList) {
 		  console.log(mutation.type);
             if (mutation.type === 'childList') {
