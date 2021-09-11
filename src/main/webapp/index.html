@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 112')
+console.log('ver. 114')
 let titleMainBlock = 'General';
 let delay = 300;
 let statusHover = false;
@@ -503,9 +503,9 @@ function findElement(sidebar){
 }
 
 function rewriteListeners(item, targetItem){
-	item.addEventListener('click', insertFigure, true);
+	item.addEventListener('click', (e) => {e.stopImmediatePropagation()}, true);
 	item.addEventListener('dragstart', (e) => {e.stopImmediatePropagation()}, true);
-	item.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation()}, true);
+	item.addEventListener('pointerdown', insertFigure, true);
 	item.addEventListener('pointermove', hoverFigure, true);
 	item.addEventListener('mouseover', hoverFigure, true);
 	item.addEventListener('mouseout', removeFigure, true);
@@ -587,10 +587,11 @@ function monitorAddingEl1(paintBlock){
 // 		    statusHover = true;
 // 		    changeFigure(hoverBlock);
 //             }
-		  
+		 if (count === 100) observer.disconnect(); 
           }
-		if (count === 100) observer.disconnect();
+		
        };
+	console.log(count);
 }	
 	
 async function changeFigure(hoverBlock){
