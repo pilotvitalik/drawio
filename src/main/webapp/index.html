@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 80')
+console.log('ver. 81')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -531,7 +531,28 @@ function insertFigure(){
 	let svg = block.querySelector('svg');
 	let paintBlocks = svg.querySelector('g').children[1].querySelectorAll('g');
 	let path = paintBlocks[paintBlocks.length - 1].querySelector('path');
-	//path.setAttribute('transform', 'rotate(-180,1433,336)');		   
+	let coordinate = path.getAttribute('d');
+	let updCoordinate = changeCoordinate(coordinate);
+	path.setAttribute('d', 'updCoordinate');		   
+}
+	
+function changeCoordinate(coordinate){
+	let arrStr = coordinate.split(' ');
+	let x1 = arrStr[1];
+	let x2 = arrStr[4];
+	arrStr = arrStr.reduce((prev, item) => {
+	  if (item === x1){
+  	    prev.push(x2);
+    	    return prev;
+  	  } else if (item === x2){
+  	    prev.push(x1);
+    	    return prev;
+  	  } else {
+  	    prev.push(item);
+    	    return prev;
+  	  }
+	}, []);
+ 	return arrStr.join(' ');
 }
 
 </script>
