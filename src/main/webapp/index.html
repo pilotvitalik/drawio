@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 103')
+console.log('ver. 104')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -548,23 +548,29 @@ function monitorAddingEl(hoverBlock){
 	const observer = new MutationObserver(callback);
 	
 	observer.observe(target, config);
-	
+	let count = 0;
 	function callback(mutationsList, observer) {
 		console.log('callback')
 		console.log(mutationsList);
 		console.log(observer)
+		count++;
           for (let mutation of mutationsList) {
 		  console.log(mutation.type);
             if (mutation.type === 'childList') {
               console.log('A child node has been added or removed.');
 		    changeFigure(hoverBlock);
-		    observer.disconnect();
+		    
             }
+		  console.log('count: ', count)
+		if (count === 100){
+			observer.disconnect();
+		}
           }
+		
        };
 }
 	
-function changeFigure(hoverBlock){
+async function changeFigure(hoverBlock){
 	console.log('hoverBlock')
 	let svg = hoverBlock.querySelector('svg');
 	let paintBlock = svg.querySelector('g').children[1];
