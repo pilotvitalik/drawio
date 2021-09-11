@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 110')
+console.log('ver. 111')
 let titleMainBlock = 'General';
 let delay = 300;
 let statusHover = false;
@@ -565,8 +565,7 @@ function monitorAddingEl(){
 	
 function monitorAddingEl1(paintBlock){
 	console.log('monitorAddingEl1')
-	let target = document.querySelector('.geEditor');
-	
+	console.log(paintBlock);
 	const config = {
     		childList: true,
 	};
@@ -577,6 +576,7 @@ function monitorAddingEl1(paintBlock){
 	let count = 0
 	function callback(mutationsList, observer) {
 		count++;
+		console.log(mutationsList);
           for (let mutation of mutationsList) {
 		  console.log(mutation);
 //             if (mutation.type === 'childList' && mutation.addedNodes[0].className === 'geSidebarTooltip') {
@@ -586,8 +586,9 @@ function monitorAddingEl1(paintBlock){
 // 		    statusHover = true;
 // 		    changeFigure(hoverBlock);
 //             }
-		  if (count === 100) observer.disconnect();
+		  
           }
+		if (count === 100) observer.disconnect();
        };
 }	
 	
