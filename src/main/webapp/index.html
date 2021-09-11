@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 104')
+console.log('ver. 105')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -556,11 +556,11 @@ function monitorAddingEl(hoverBlock){
 		count++;
           for (let mutation of mutationsList) {
 		  console.log(mutation.type);
-            if (mutation.type === 'childList') {
-              console.log('A child node has been added or removed.');
-		    changeFigure(hoverBlock);
+//             if (mutation.type === 'childList') {
+//               console.log('A child node has been added or removed.');
+// 		    changeFigure(hoverBlock);
 		    
-            }
+//             }
 		  console.log('count: ', count)
 		if (count === 100){
 			observer.disconnect();
