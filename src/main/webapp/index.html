@@ -471,10 +471,10 @@ else
 	}
 }
 
-console.log('ver. 108')
+console.log('ver. 109')
 let titleMainBlock = 'General';
 let delay = 300;
-let status = false;
+let statusHover = false;
 let isSidebar = setTimeout(function request() {
 	let sidebar = document.querySelectorAll('.geTitle');
 	if (sidebar.length) {
@@ -503,9 +503,9 @@ function findElement(sidebar){
 }
 
 function rewriteListeners(item, targetItem){
-	//item.addEventListener('click', (e) => {setTimeout(() => {insertFigure()}, 100)}, true);
-	//item.addEventListener('dragstart', (e) => {setTimeout(() => {insertFigure()}, 100)}, true);
-	//item.addEventListener('pointerdown', (e) => {setTimeout(() => {insertFigure()}, 100)}, true);
+	item.addEventListener('click', insertFigure, true);
+	item.addEventListener('dragstart', insertFigure, true);
+	item.addEventListener('pointerdown', insertFigure, true);
 	item.addEventListener('pointermove', hoverFigure, true);
 	item.addEventListener('mouseover', hoverFigure, true);
 	item.addEventListener('mouseout', removeFigure, true);
@@ -514,22 +514,21 @@ function rewriteListeners(item, targetItem){
 function changeElement(targetItem){
 	let updateCoordinate = 'M 26.22 1.36 Q 5.82 1.36 5.82 14.96 Q 5.82 28.56 26.22 28.56 Z';
 	targetItem.setAttribute('d', updateCoordinate);
-// 	targetItem.addEventListener('click', (e) => {e.stopImmediatePropagation()}, true);
-// 	targetItem.addEventListener('dragstart', (e) => {e.stopImmediatePropagation()}, true);
-// 	targetItem.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation()}, true);
+ 	targetItem.addEventListener('click', (e) => {e.stopImmediatePropagation()}, true);
+ 	targetItem.addEventListener('dragstart', (e) => {e.stopImmediatePropagation()}, true);
+ 	targetItem.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation()}, true);
 	targetItem.addEventListener('pointermove', (e) => {e.stopImmediatePropagation()}, true);
 	targetItem.addEventListener('mouseover', (e) => {e.stopImmediatePropagation()}, true);
 }
 
 function hoverFigure(e){
-	console.log('hoverFigure')
 	let hoverBlock = document.querySelector('.geSidebarTooltip');
-	if (status) e.stopImmediatePropagation();
+	if (statusHover) e.stopImmediatePropagation();
 	if (!hoverBlock) {
 		monitorAddingEl();
 		return false;
 	};
-	if (!status) status = true;
+	if (!statusHover) statusHover = true;
 	changeFigure(hoverBlock)
 }
 	
@@ -541,7 +540,6 @@ function removeFigure(){
 }
 	
 function monitorAddingEl(){
-	console.log('monitorAddingEl')
 	let target = document.querySelector('.geEditor');
 	
 	const config = {
@@ -558,15 +556,41 @@ function monitorAddingEl(){
               console.log('A child node has been added or removed.');
 		    let hoverBlock = document.querySelector('.geSidebarTooltip');
 		    observer.disconnect();
-		    status = true;
+		    statusHover = true;
 		    changeFigure(hoverBlock);
             }
           }
        };
 }
 	
+function monitorAddingEl1(paintBlock){
+	let target = document.querySelector('.geEditor');
+	
+	const config = {
+    		childList: true,
+	};
+	
+	const observer = new MutationObserver(callback);
+	
+	observer.observe(paintBlock, config);
+	let count = 0
+	function callback(mutationsList, observer) {
+		count++;
+          for (let mutation of mutationsList) {
+		  console.log(mutation);
+//             if (mutation.type === 'childList' && mutation.addedNodes[0].className === 'geSidebarTooltip') {
+//               console.log('A child node has been added or removed.');
+// 		    let hoverBlock = document.querySelector('.geSidebarTooltip');
+// 		    observer.disconnect();
+// 		    statusHover = true;
+// 		    changeFigure(hoverBlock);
+//             }
+		  if (count === 100) observer.disconnect();
+          }
+       };
+}	
+	
 async function changeFigure(hoverBlock){
-	console.log('hoverBlock')
 	let svg = hoverBlock.querySelector('svg');
 	let paintBlock = svg.querySelector('g').children[1];
 	if (paintBlock.querySelector('.customEl')) return false;
@@ -583,11 +607,13 @@ async function changeFigure(hoverBlock){
 function insertFigure(){
 	let block = document.querySelector('.geDiagramBackdrop');
 	let svg = block.querySelector('svg');
-	let paintBlocks = svg.querySelector('g').children[1].querySelectorAll('g');
+	let paintBlock = svg.querySelector('g');
+	monitorAddingEl1(paintBlock);
+	/*
 	let path = paintBlocks[paintBlocks.length - 1].querySelector('path');
 	let coordinate = path.getAttribute('d');
 	let updCoordinate = changeCoordinate(coordinate);
-	path.setAttribute('d', updCoordinate);		   
+	path.setAttribute('d', updCoordinate);	*/	   
 }
 	
 function changeCoordinate(coordinate){
