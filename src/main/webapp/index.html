@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 82')
+console.log('ver. 83')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -502,9 +502,9 @@ function findElement(sidebar){
 }
 
 function rewriteListeners(item, targetItem){
-	item.addEventListener('click', (e) => {insertFigure()}, true);
-	item.addEventListener('dragstart', (e) => {insertFigure()}, true);
-	item.addEventListener('pointerdown', (e) => {insertFigure()}, true);
+	item.addEventListener('click', (e) => {setTimeout(() => {insertFigure()}, 0)}, true);
+	item.addEventListener('dragstart', (e) => {setTimeout(() => {insertFigure()}, 0)}, true);
+	item.addEventListener('pointerdown', (e) => {setTimeout(() => {insertFigure()}, 0)}, true);
 	item.addEventListener('pointermove', (e) => {hoverFigure()}, true);
 }
 
