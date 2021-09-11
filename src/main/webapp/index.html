@@ -471,9 +471,10 @@ else
 	}
 }
 
-console.log('ver. 106')
+console.log('ver. 107')
 let titleMainBlock = 'General';
 let delay = 300;
+let status = false;
 let isSidebar = setTimeout(function request() {
 	let sidebar = document.querySelectorAll('.geTitle');
 	if (sidebar.length) {
@@ -520,13 +521,15 @@ function changeElement(targetItem){
 	targetItem.addEventListener('mouseover', (e) => {e.stopImmediatePropagation()}, true);
 }
 
-function hoverFigure(){
+function hoverFigure(e){
 	console.log('hoverFigure')
 	let hoverBlock = document.querySelector('.geSidebarTooltip');
+	if (status) e.stopImmediatePropagation();
 	if (!hoverBlock) {
 		monitorAddingEl();
 		return false;
 	};
+	if (!status) status = true;
 	changeFigure(hoverBlock)
 }
 	
@@ -548,30 +551,17 @@ function monitorAddingEl(){
 	const observer = new MutationObserver(callback);
 	
 	observer.observe(target, config);
-	let count = 0;
+	
 	function callback(mutationsList, observer) {
-		console.log('callback')
-		console.log(mutationsList);
-		console.log(observer)
-		count++;
           for (let mutation of mutationsList) {
-		  console.log(Array.isArray(mutation.addedNodes));
-		  console.log(mutation.addedNodes);
-		  console.log(mutation.addedNodes[0]);
-		  console.log(mutation.addedNodes[0].className);
             if (mutation.type === 'childList' && mutation.addedNodes[0].className === 'geSidebarTooltip') {
               console.log('A child node has been added or removed.');
 		    let hoverBlock = document.querySelector('.geSidebarTooltip');
 		    observer.disconnect();
+		    status = true;
 		    changeFigure(hoverBlock);
-		    
             }
-		  console.log('count: ', count)
-		if (count === 100){
-			observer.disconnect();
-		}
           }
-		
        };
 }
 	
