@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 122')
+console.log('ver. 123')
 let titleMainBlock = 'General';
 let delay = 300;
 let statusHover = false;
@@ -620,7 +620,7 @@ function changeCoordinate(coordinate){
 	
 function rewriteFigureListeners(figure){
 	let parent = figure.parentElement;
-	parent.pointerdown = clickFigure(parent, e);
+	parent.pointerdown = clickFigure(parent);
 }
 	
 function clickFigure(e){
