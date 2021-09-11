@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 116')
+console.log('ver. 117')
 let titleMainBlock = 'General';
 let delay = 300;
 let statusHover = false;
@@ -574,9 +574,8 @@ function monitorAddingEl1(paintBlock){
 	const observer = new MutationObserver(callback);
 	
 	observer.observe(paintBlock, config);
-	let count = 0
+
 	function callback(mutationsList, observer) {
-		count++;
 		console.log(mutationsList);
           for (let mutation of mutationsList) {
 		  console.log(mutation);
@@ -585,11 +584,9 @@ function monitorAddingEl1(paintBlock){
 		    let figureBlocks = paintBlock.querySelectorAll('g');
 		    let figure = figureBlocks[figureBlocks.length - 1].querySelector('path');
 		    console.log(figure);
-// 		    observer.disconnect();
-// 		    statusHover = true;
-// 		    changeFigure(hoverBlock);
+		    observer.disconnect();
+		    rotateFigure(figure);
             }
-		 if (count === 100) observer.disconnect(); 
           }
 		
        };
@@ -614,12 +611,13 @@ function insertFigure(){
 	let block = document.querySelector('.geDiagramBackdrop');
 	let svg = block.querySelector('svg');
 	let paintBlock = svg.querySelector('g').children[1];
-	monitorAddingEl1(paintBlock);
-	/*
-	let path = paintBlocks[paintBlocks.length - 1].querySelector('path');
-	let coordinate = path.getAttribute('d');
+	monitorAddingEl1(paintBlock);	   
+}
+	
+function rotateFigure(figure){
+	let coordinate = figure.getAttribute('d');
 	let updCoordinate = changeCoordinate(coordinate);
-	path.setAttribute('d', updCoordinate);	*/	   
+	figure.setAttribute('d', updCoordinate);
 }
 	
 function changeCoordinate(coordinate){
@@ -638,7 +636,6 @@ function changeCoordinate(coordinate){
     	    return prev;
   	  }
 	}, []);
-	console.log(arrStr.join(' '))
  	return arrStr.join(' ');
 }
 
