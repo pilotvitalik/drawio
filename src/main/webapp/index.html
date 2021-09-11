@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 115')
+console.log('ver. 116')
 let titleMainBlock = 'General';
 let delay = 300;
 let statusHover = false;
@@ -580,13 +580,15 @@ function monitorAddingEl1(paintBlock){
 		console.log(mutationsList);
           for (let mutation of mutationsList) {
 		  console.log(mutation);
-//             if (mutation.type === 'childList' && mutation.addedNodes[0].className === 'geSidebarTooltip') {
-//               console.log('A child node has been added or removed.');
-// 		    let hoverBlock = document.querySelector('.geSidebarTooltip');
+            if (mutation.type === 'childList') {
+              console.log('A child node has been added or removed.');
+		    let figureBlocks = paintBlock.querySelectorAll('g');
+		    let figure = figureBlocks[figureBlocks.length - 1].querySelector('path');
+		    console.log(figure);
 // 		    observer.disconnect();
 // 		    statusHover = true;
 // 		    changeFigure(hoverBlock);
-//             }
+            }
 		 if (count === 100) observer.disconnect(); 
           }
 		
@@ -611,7 +613,7 @@ async function changeFigure(hoverBlock){
 function insertFigure(){
 	let block = document.querySelector('.geDiagramBackdrop');
 	let svg = block.querySelector('svg');
-	let paintBlock = svg.querySelector('g').children[2];
+	let paintBlock = svg.querySelector('g').children[1];
 	monitorAddingEl1(paintBlock);
 	/*
 	let path = paintBlocks[paintBlocks.length - 1].querySelector('path');
