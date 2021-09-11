@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 91')
+console.log('ver. 92')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -523,7 +523,54 @@ function changeElement(targetItem){
 function hoverFigure(){
 	console.log('hoverFigure')
 	let hoverBlock = document.querySelector('.geSidebarTooltip');
-	let svg = hoverBlock.querySelector('svg');
+	if (!hoverBlock) {
+		monitorAddingEl();
+		return false;
+	};
+	changeFigure(hoverBlock)
+}
+	
+function removeFigure(){
+	let hoverBlock = document.querySelector('.geSidebarTooltip');
+	let bigFigure = hoverBlock.querySelector('.customEl');
+	bigFigure.remove();
+}
+	
+function monitorAddingEl(){
+	let target = document.getElementById('.geEditor');
+	
+	const config = {
+    		childList: true,
+	};
+	
+	const callback = function(mutationsList, observer) {
+          for (let mutation of mutationsList) {
+            if (mutation.type === 'childList') {
+              console.log('A child node has been added or removed.');
+		    changeFigure(hoverBlock)
+            }
+          }
+       };
+	
+	const observer = new MutationObserver(callback);
+	
+	observer.observe(target, config);
+	
+	observer.disconnect();
+}
+	
+function changeFigure(hoverBlock){
+	let svlet svg = hoverBlock.querySelector('svg');
+	let paintBlock = svg.querySelector('g').children[1];
+	if (paintBlock.querySelector('.customEl')) return false;
+	let bigFigure = '<g class="customEl" transform="translate(0.5,0.5)" style="visibility: visible;">';
+	hoverBlock.style.width = '101px';
+	hoverBlock.style.height = '146px';
+	hoverBlock.style.display = 'block';
+	bigFigure += '<path d="M 84 16 Q 24 16 24 56 Q 24 96 84 96 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="all"></path>'
+	bigFigure += '</g>'
+	paintBlock.innerHTML = '';
+	paintBlock.insertAdjacentHTML('beforeend', bigFigure);g = hoverBlock.querySelector('svg');
 	let paintBlock = svg.querySelector('g').children[1];
 	if (paintBlock.querySelector('.customEl')) return false;
 	let bigFigure = '<g class="customEl" transform="translate(0.5,0.5)" style="visibility: visible;">';
@@ -534,12 +581,6 @@ function hoverFigure(){
 	bigFigure += '</g>'
 	paintBlock.innerHTML = '';
 	paintBlock.insertAdjacentHTML('beforeend', bigFigure);
-}
-	
-function removeFigure(){
-	let hoverBlock = document.querySelector('.geSidebarTooltip');
-	let bigFigure = hoverBlock.querySelector('.customEl');
-	bigFigure.remove();
 }
 	
 function insertFigure(){
