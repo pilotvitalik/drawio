@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 125')
+console.log('ver. 126')
 let titleMainBlock = 'General';
 let delay = 300;
 let statusHover = false;
@@ -622,6 +622,7 @@ function rewriteFigureListeners(figure){
 	let parent = figure.parentElement;
 	parent.onpointerdown = clickFigure.bind(parent);
 	parent.onpointerup = unClickFigure.bind(parent);
+	parent.onmouseup = unClickFigure.bind(parent);
 }
 	
 function clickFigure(e){
