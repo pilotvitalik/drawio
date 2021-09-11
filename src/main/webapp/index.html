@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 109')
+console.log('ver. 110')
 let titleMainBlock = 'General';
 let delay = 300;
 let statusHover = false;
@@ -514,9 +514,9 @@ function rewriteListeners(item, targetItem){
 function changeElement(targetItem){
 	let updateCoordinate = 'M 26.22 1.36 Q 5.82 1.36 5.82 14.96 Q 5.82 28.56 26.22 28.56 Z';
 	targetItem.setAttribute('d', updateCoordinate);
- 	targetItem.addEventListener('click', (e) => {e.stopImmediatePropagation()}, true);
- 	targetItem.addEventListener('dragstart', (e) => {e.stopImmediatePropagation()}, true);
- 	targetItem.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation()}, true);
+ 	//targetItem.addEventListener('click', (e) => {e.stopImmediatePropagation()}, true);
+ 	//targetItem.addEventListener('dragstart', (e) => {e.stopImmediatePropagation()}, true);
+ 	//targetItem.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation()}, true);
 	targetItem.addEventListener('pointermove', (e) => {e.stopImmediatePropagation()}, true);
 	targetItem.addEventListener('mouseover', (e) => {e.stopImmediatePropagation()}, true);
 }
@@ -564,6 +564,7 @@ function monitorAddingEl(){
 }
 	
 function monitorAddingEl1(paintBlock){
+	console.log('monitorAddingEl1')
 	let target = document.querySelector('.geEditor');
 	
 	const config = {
