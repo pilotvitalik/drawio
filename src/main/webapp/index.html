@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 118')
+console.log('ver. 119')
 let titleMainBlock = 'General';
 let delay = 300;
 let statusHover = false;
@@ -539,9 +539,11 @@ function removeFigure(){
 	bigFigure.remove();
 }
 	
-function monitorAddingEl(){
-	console.log('monitorAddingEl')
-	let target = document.querySelector('.geEditor');
+function monitorAddingEl(...args){
+	let target = args[0];
+	if (!args.length){
+		target = document.querySelector('.geEditor');
+	}
 	
 	const config = {
     		childList: true,
@@ -553,44 +555,24 @@ function monitorAddingEl(){
 	
 	function callback(mutationsList, observer) {
           for (let mutation of mutationsList) {
-            if (mutation.type === 'childList' && mutation.addedNodes[0].className === 'geSidebarTooltip') {
-              console.log('A child node has been added or removed.');
-		    let hoverBlock = document.querySelector('.geSidebarTooltip');
-		    observer.disconnect();
-		    statusHover = true;
-		    changeFigure(hoverBlock);
-            }
+		  if (!args.length){
+			  if (mutation.type === 'childList' && mutation.addedNodes[0].className === 'geSidebarTooltip') {
+		    		let hoverBlock = document.querySelector('.geSidebarTooltip');
+		    		observer.disconnect();
+		    		statusHover = true;
+		    		changeFigure(hoverBlock);
+            		  }
+		  } else {
+			  if (mutation.type === 'childList') {
+		    		let figureBlocks = paintBlock.querySelectorAll('g');
+		    		let figure = figureBlocks[figureBlocks.length - 1].querySelector('path');
+		    		observer.disconnect();
+		    		rotateFigure(figure);
+            		  }
+		  }
           }
        };
 }
-	
-function monitorAddingEl1(paintBlock){
-	console.log('monitorAddingEl1')
-	console.log(paintBlock);
-	const config = {
-    		childList: true,
-	};
-	
-	const observer = new MutationObserver(callback);
-	
-	observer.observe(paintBlock, config);
-
-	function callback(mutationsList, observer) {
-		console.log(mutationsList);
-          for (let mutation of mutationsList) {
-		  console.log(mutation);
-            if (mutation.type === 'childList') {
-              console.log('A child node has been added or removed.');
-		    let figureBlocks = paintBlock.querySelectorAll('g');
-		    let figure = figureBlocks[figureBlocks.length - 1].querySelector('path');
-		    console.log(figure);
-		    observer.disconnect();
-		    rotateFigure(figure);
-            }
-          }
-		
-       };
-}	
 	
 async function changeFigure(hoverBlock){
 	let svg = hoverBlock.querySelector('svg');
@@ -610,7 +592,7 @@ function insertFigure(){
 	let block = document.querySelector('.geDiagramBackdrop');
 	let svg = block.querySelector('svg');
 	let paintBlock = svg.querySelector('g').children[1];
-	monitorAddingEl1(paintBlock);	   
+	monitorAddingEl(paintBlock);	   
 }
 	
 function rotateFigure(figure){
