@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 124')
+console.log('ver. 125')
 let titleMainBlock = 'General';
 let delay = 300;
 let statusHover = false;
@@ -620,12 +620,18 @@ function changeCoordinate(coordinate){
 	
 function rewriteFigureListeners(figure){
 	let parent = figure.parentElement;
-	parent.pointerdown = clickFigure(parent);
+	parent.onpointerdown = clickFigure.bind(parent);
+	parent.onpointerup = unClickFigure.bind(parent);
 }
 	
-function clickFigure(){
-	this.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation()}, true);
+function clickFigure(e){
+	e.stopImmediatePropagation()
 	this.addEventListener('pointermove', moveFigure, true);
+}
+
+function unClickFigure(e){
+	e.stopImmediatePropagation()
+	this.removeEventListener('pointermove', moveFigure, true);
 }
 	
 function moveFigure(e){
