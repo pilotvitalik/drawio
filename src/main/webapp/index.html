@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 86')
+console.log('ver. 87')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -523,9 +523,13 @@ function hoverFigure(){
 	console.log('hoverFigure')
 	let hoverBlock = document.querySelector('.geSidebarTooltip');
 	let svg = hoverBlock.querySelector('svg');
-	let paintBlock = svg.querySelector('g').children[1].children[0].children[0]
-	let updateCoordinate = 'M 84 16 Q 24 16 24 56 Q 24 96 84 96 Z';
-	paintBlock.setAttribute('d', updateCoordinate);
+	let paintBlock = svg.querySelector('g').children[1];
+	if (paintBlock.querySelector('.customEl')) return false;
+	let bigFigure = '<g class="customEl" transform="translate(0.5,0.5)" style="visibility: visible;">';
+	bigFigure += '<path d="M 84 16 Q 24 16 24 56 Q 24 96 84 96 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="all"></path>'
+	bigFigure += '</g>'
+	paintBlock.innerHTML = '';
+	paintBlock.insertAdjacentHTML('beforeend', bigFigure);
 }
 	
 function insertFigure(){
