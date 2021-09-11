@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 105')
+console.log('ver. 106')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -524,7 +524,7 @@ function hoverFigure(){
 	console.log('hoverFigure')
 	let hoverBlock = document.querySelector('.geSidebarTooltip');
 	if (!hoverBlock) {
-		monitorAddingEl(hoverBlock);
+		monitorAddingEl();
 		return false;
 	};
 	changeFigure(hoverBlock)
@@ -537,7 +537,7 @@ function removeFigure(){
 	bigFigure.remove();
 }
 	
-function monitorAddingEl(hoverBlock){
+function monitorAddingEl(){
 	console.log('monitorAddingEl')
 	let target = document.querySelector('.geEditor');
 	
@@ -555,12 +555,17 @@ function monitorAddingEl(hoverBlock){
 		console.log(observer)
 		count++;
           for (let mutation of mutationsList) {
-		  console.log(mutation.type);
-//             if (mutation.type === 'childList') {
-//               console.log('A child node has been added or removed.');
-// 		    changeFigure(hoverBlock);
+		  console.log(Array.isArray(mutation.addedNodes));
+		  console.log(mutation.addedNodes);
+		  console.log(mutation.addedNodes[0]);
+		  console.log(mutation.addedNodes[0].className);
+            if (mutation.type === 'childList' && mutation.addedNodes[0].className === 'geSidebarTooltip') {
+              console.log('A child node has been added or removed.');
+		    let hoverBlock = document.querySelector('.geSidebarTooltip');
+		    observer.disconnect();
+		    changeFigure(hoverBlock);
 		    
-//             }
+            }
 		  console.log('count: ', count)
 		if (count === 100){
 			observer.disconnect();
