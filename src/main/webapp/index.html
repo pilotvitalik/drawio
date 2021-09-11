@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 114')
+console.log('ver. 115')
 let titleMainBlock = 'General';
 let delay = 300;
 let statusHover = false;
@@ -611,7 +611,7 @@ async function changeFigure(hoverBlock){
 function insertFigure(){
 	let block = document.querySelector('.geDiagramBackdrop');
 	let svg = block.querySelector('svg');
-	let paintBlock = svg.querySelector('g');
+	let paintBlock = svg.querySelector('g').children[2];
 	monitorAddingEl1(paintBlock);
 	/*
 	let path = paintBlocks[paintBlocks.length - 1].querySelector('path');
