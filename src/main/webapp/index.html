@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 111')
+console.log('ver. 112')
 let titleMainBlock = 'General';
 let delay = 300;
 let statusHover = false;
@@ -504,8 +504,8 @@ function findElement(sidebar){
 
 function rewriteListeners(item, targetItem){
 	item.addEventListener('click', insertFigure, true);
-	item.addEventListener('dragstart', insertFigure, true);
-	item.addEventListener('pointerdown', insertFigure, true);
+	item.addEventListener('dragstart', (e) => {e.stopImmediatePropagation()}, true);
+	item.addEventListener('pointerdown', (e) => {e.stopImmediatePropagation()}, true);
 	item.addEventListener('pointermove', hoverFigure, true);
 	item.addEventListener('mouseover', hoverFigure, true);
 	item.addEventListener('mouseout', removeFigure, true);
@@ -540,6 +540,7 @@ function removeFigure(){
 }
 	
 function monitorAddingEl(){
+	console.log('monitorAddingEl')
 	let target = document.querySelector('.geEditor');
 	
 	const config = {
