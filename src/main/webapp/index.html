@@ -471,7 +471,7 @@ else
 	}
 }
 
-console.log('ver. 79')
+console.log('ver. 80')
 let titleMainBlock = 'General';
 let delay = 300;
 let isSidebar = setTimeout(function request() {
@@ -523,7 +523,7 @@ function hoverFigure(){
 	let svg = hoverBlock.querySelector('svg');
 	let paintBlock = svg.querySelector('g').children[1].children[0].children[0]
 	let updateCoordinate = 'M 84 16 Q 24 16 24 56 Q 24 96 84 96 Z';
-	//paintBlock.setAttribute('d', updateCoordinate);
+	paintBlock.setAttribute('d', updateCoordinate);
 }
 	
 function insertFigure(){
@@ -531,7 +531,7 @@ function insertFigure(){
 	let svg = block.querySelector('svg');
 	let paintBlocks = svg.querySelector('g').children[1].querySelectorAll('g');
 	let path = paintBlocks[paintBlocks.length - 1].querySelector('path');
-	path.setAttribute('transform', 'rotate(-180,1433,336)');		   
+	//path.setAttribute('transform', 'rotate(-180,1433,336)');		   
 }
 
 </script>
