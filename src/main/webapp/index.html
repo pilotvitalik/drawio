@@ -471,7 +471,6 @@ else
 	}
 }
 
-console.log('ver. 126')
 let titleMainBlock = 'General';
 let delay = 300;
 let statusHover = false;
@@ -596,7 +595,6 @@ function rotateFigure(figure){
 	let coordinate = figure.getAttribute('d');
 	let updCoordinate = changeCoordinate(coordinate);
 	figure.setAttribute('d', updCoordinate);
-	rewriteFigureListeners(figure);
 }
 	
 function changeCoordinate(coordinate){
@@ -616,31 +614,7 @@ function changeCoordinate(coordinate){
   	  }
 	}, []);
  	return arrStr.join(' ');
-}
-	
-function rewriteFigureListeners(figure){
-	let parent = figure.parentElement;
-	parent.onpointerdown = clickFigure.bind(parent);
-	parent.onpointerup = unClickFigure.bind(parent);
-	parent.onmouseup = unClickFigure.bind(parent);
-}
-	
-function clickFigure(e){
-	e.stopImmediatePropagation()
-	this.addEventListener('pointermove', moveFigure, true);
-}
-
-function unClickFigure(e){
-	e.stopImmediatePropagation()
-	this.removeEventListener('pointermove', moveFigure, true);
-}
-	
-function moveFigure(e){
-	e.stopImmediatePropagation();
-	console.log(e);
-	console.log(e.x);
-	console.log(e.y)
-}
+}	
 
 </script>
 </body>
